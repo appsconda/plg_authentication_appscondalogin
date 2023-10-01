@@ -13,6 +13,9 @@ defined('_JEXEC') or die('No direct access');
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\User\User;
 use Joomla\CMS\User\UserHelper;
+use Joomla\CMS\Factory;
+use \Joomla\CMS\Authentication\Authentication;
+
 
 class plgAuthenticationAppscondalogin extends CMSPlugin
 {
@@ -30,7 +33,7 @@ class plgAuthenticationAppscondalogin extends CMSPlugin
 		$passwordraw = isset($credentials['password']) ? $credentials['password'] : null; //got this from the controller file
 		$passwordhashed = hash('sha256', $passwordraw);
 		$deviceidlogin = isset($credentials['deviceidlogin']) ? $credentials['deviceidlogin'] : null; //got this from the controller file
-        $db = JFactory::getDbo();
+        $db = Factory::getDbo();
 		
         // Check if userid and password exist in database
         $query = $db->getQuery(true)
@@ -50,7 +53,7 @@ class plgAuthenticationAppscondalogin extends CMSPlugin
 
             // Set the response variables
             $response->type             = 'Joomla';
-            $response->status           = JAuthentication::STATUS_SUCCESS;
+            $response->status           = Authentication::STATUS_SUCCESS;
             $response->error_message    = '';
             $response->username         = $user->username;
             $response->fullname         = $user->name;
@@ -65,7 +68,7 @@ class plgAuthenticationAppscondalogin extends CMSPlugin
 
             return true;
         } else {
-            $response->status        = JAuthentication::STATUS_FAILURE;
+            $response->status        = Authentication::STATUS_FAILURE;
             $response->error_message = 'Invalid userid or deviceidlogin or password';
             return false;
         }
