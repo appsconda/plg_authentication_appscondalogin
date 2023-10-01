@@ -1,0 +1,17 @@
+<extension version="4.0" type="plugin" group="authentication" method="upgrade">
+    <name>Authentication - Appsconda Login</name>
+    <author>appsconda.com</author>
+  	<creationDate>30 September 2023</creationDate>
+  	<copyright>Copyright (C) 2018 AppsConda ApS. All Rights Reserved.</copyright>
+  	<license>GNU General Public License version 2 or later;</license>
+  	<authorEmail>support@appsconda.com</authorEmail>
+  	<authorUrl>https://appsconda.com/</authorUrl>
+  	<version>1.0.0</version>
+    <description>This Joomla plugin keeps the users logged into the mobile app powered by AppsConda component.</description>
+    <files>
+        <filename plugin="appscondalogin">appscondalogin.php</filename>
+    </files>
+  <updateservers>	
+		<server type="extension" priority="1" name="Authentication - Appsconda Login">https://appsconda.com/updates/appsconda.xml</server>
+	</updateservers>
+</extension>
